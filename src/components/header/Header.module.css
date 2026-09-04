@@ -1,0 +1,154 @@
+.header {
+    background: #ffffff !important;
+    color: #111827 !important;
+    box-shadow: none !important;
+}
+
+.toolbar {
+    height: 84px;
+    min-height: 84px !important;
+    display: flex;
+    align-items: center;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logoLink {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+
+.logoText {
+    font-family: "Manrope", sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 900 !important;
+    color: var(--neutral-b-900);
+}
+
+.navigation {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.navItem {
+    padding: 6px 12px !important;
+    font-family: "Inter", sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: var(--neutral-b-500) !important;
+    text-transform: none !important;
+}
+
+.dropdownIcon {
+    font-size: 16px !important;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.search {
+    width: 172px;
+}
+
+.search :global(.MuiOutlinedInput-root) {
+    height: 30px;
+    border-radius: 5px;
+    font-family: "Manrope", sans-serif;
+    font-size: 10px;
+}
+
+.search :global(.MuiOutlinedInput-notchedOutline) {
+    border-color: #e5e7eb;
+}
+
+.search :global(.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline) {
+    border-color: #d1d5db;
+}
+
+.search :global(.MuiOutlinedInput-input) {
+    padding: 6px 8px;
+}
+
+.searchIcon {
+    width: 16px !important;
+    height: 16px !important;
+    color: #6b7280;
+    margin-right: 4px;
+}
+
+/* ================= ICONS ================= */
+
+.iconButton {
+    width: 32px;
+    height: 32px;
+    padding: 6px !important;
+    color: #4b5563 !important;
+}
+
+.iconButton svg {
+    width: 17px;
+    height: 17px;
+}
+
+.iconButton:hover {
+    background: #f8f8f8 !important;
+    color: #111827 !important;
+}
+
+/* ================= MOBILE ================= */
+
+.mobileMenu {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .navigation {
+        display: none;
+    }
+
+    .mobileMenu {
+        display: block;
+        margin-left: auto;
+    }
+
+    .actions {
+        margin-left: 4px;
+    }
+
+    .search {
+        display: none;
+    }
+
+    .toolbar {
+        height: 56px;
+    }
+}
+
+@media (max-width: 500px) {
+    .logoText {
+        display: none;
+    }
+
+    .actions {
+        gap: 2px;
+    }
+}

@@ -1,0 +1,15 @@
+.notification_bar {
+    height: 40px;
+    background: #08060d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.order_now {
+    color: white!important;
+    text-decoration: none!important;
+    margin-left: 8px!important;
+    text-transform: capitalize;
+}
