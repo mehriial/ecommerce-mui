@@ -8,9 +8,14 @@
   --social-bg: rgba(244, 243, 236, 0.5);
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-  --neutral-800: #5C5F6A;
   --neutral-b-900: #0E1422;
+  --neutral-b-800: #202533;
+  --neutral-b-600: #474B57;
   --neutral-b-500: #5C5F6A;
+  --neutral-b-100: #E6E7E8;
+  --neutral-b-300: #878A92;
+  --neutral-w-100: #f6f6f6;
+  --neutral-w-200: #E9E9EB;
 
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -36,5 +41,6 @@
 body {
   margin: 0;
   box-sizing: border-box;
+  font-family: "Inter", serif;
 }
 

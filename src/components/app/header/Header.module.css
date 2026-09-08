@@ -1,6 +1,6 @@
 .header {
     background: #ffffff !important;
-    color: #111827 !important;
+    color: var(--neutral-b-500) !important;
     box-shadow: none !important;
 }
 
@@ -61,27 +61,18 @@
 .actions {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 20px;
     flex-shrink: 0;
 }
 
 .search {
-    width: 172px;
+    max-width: 200px;
 }
 
 .search :global(.MuiOutlinedInput-root) {
-    height: 30px;
-    border-radius: 5px;
-    font-family: "Manrope", sans-serif;
-    font-size: 10px;
-}
-
-.search :global(.MuiOutlinedInput-notchedOutline) {
-    border-color: #e5e7eb;
-}
-
-.search :global(.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline) {
-    border-color: #d1d5db;
+    height: 35px;
+    border-radius: 6px;
+    font-size: 14px;
 }
 
 .search :global(.MuiOutlinedInput-input) {
@@ -91,30 +82,15 @@
 .searchIcon {
     width: 16px !important;
     height: 16px !important;
-    color: #6b7280;
     margin-right: 4px;
 }
 
-/* ================= ICONS ================= */
-
 .iconButton {
-    width: 32px;
-    height: 32px;
+    width: 18px;
+    height: 18px;
     padding: 6px !important;
-    color: #4b5563 !important;
+    color: var(--neutral-b-500) !important;
 }
-
-.iconButton svg {
-    width: 17px;
-    height: 17px;
-}
-
-.iconButton:hover {
-    background: #f8f8f8 !important;
-    color: #111827 !important;
-}
-
-/* ================= MOBILE ================= */
 
 .mobileMenu {
     display: none;
@@ -148,7 +124,4 @@
         display: none;
     }
 
-    .actions {
-        gap: 2px;
-    }
 }

@@ -5,5 +5,15 @@
 }
 
 .Mui-focused {
-    outline-color: var(--primary);
+    outline-color: var(--primary)!important;
+}
+
+.container-box {
+    margin: auto;
+    max-width: 1092px;
+    padding: 100px;
+}
+
+.MuiChip-filled:hover {
+    background: var(--neutral-b-800)!important;
 }

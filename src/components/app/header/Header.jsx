@@ -9,8 +9,6 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-
 import MenuIcon from "@mui/icons-material/Menu";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import SearchIcon from "@mui/icons-material/Search";
@@ -18,6 +16,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 
 import styles from "./Header.module.css";
+import Input from "@/components/ui/Input.jsx";
 
 const pages = [
     { label: "Home", path: "/" },
@@ -194,17 +193,14 @@ function Header() {
                     </Box>
 
                     <Box className={styles.actions}>
-                        <TextField
+                        <Input
                             placeholder="Search products"
-                            variant="outlined"
                             size="small"
                             className={styles.search}
                             slotProps={{
                                 input: {
                                     startAdornment: (
-                                        <SearchIcon
-                                            className={styles.searchIcon}
-                                        />
+                                        <SearchIcon className={styles.searchIcon} />
                                     ),
                                 },
                             }}

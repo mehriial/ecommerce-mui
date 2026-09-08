@@ -1,13 +1,16 @@
 import './App.css'
-import NotificationBar from "./components/notification-bar/NotificationBar.jsx";
-import Header from "@/components/header/Header.jsx";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Home from "@/pages/home/index.jsx";
 
 function App() {
 
     return (
         <>
-            <NotificationBar/>
-            <Header/>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                </Routes>
+            </BrowserRouter>
         </>
     )
 }
