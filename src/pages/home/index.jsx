@@ -5,7 +5,6 @@ import Features from "@/components/app/features/Features.jsx";
 import BestSell from "@/components/app/best-sell/BestSell.jsx";
 import Browsing from "@/components/app/browsing/Browsing.jsx";
 import HomeProduct from "@/components/app/home-product/HomeProduct.jsx";
-import Subscribe from "@/components/app/subscribe/Subscribe.jsx";
 import Footer from "@/components/app/footer/Footer.jsx";
 
 function Home() {
@@ -19,7 +18,6 @@ function Home() {
             <BestSell/>
             <Browsing/>
             <HomeProduct/>
-            <Subscribe/>
             <Footer/>
 
         </>

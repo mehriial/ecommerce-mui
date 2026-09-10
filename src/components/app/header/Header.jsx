@@ -13,13 +13,12 @@ import MenuIcon from "@mui/icons-material/Menu";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-
 import styles from "./Header.module.css";
 import Input from "@/components/ui/Input.jsx";
 
 const pages = [
     { label: "Home", path: "/" },
+    { label: "Products", path: "/products" },
     { label: "Categories", path: "/categories", dropdown: true },
     { label: "About", path: "/about" },
     { label: "Contact", path: "/contact" },
@@ -42,7 +41,6 @@ const mobilePages = [
 function Header() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElCategories, setAnchorElCategories] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -50,10 +48,6 @@ function Header() {
 
     const handleOpenCategories = (event) => {
         setAnchorElCategories(event.currentTarget);
-    };
-
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
     };
 
     const handleCloseNavMenu = () => {
@@ -64,9 +58,6 @@ function Header() {
         setAnchorElCategories(null);
     };
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
 
     return (
         <AppBar
@@ -148,12 +139,9 @@ function Header() {
 
                                         <Menu
                                             anchorEl={anchorElCategories}
-                                            open={Boolean(
-                                                anchorElCategories
-                                            )}
-                                            onClose={
-                                                handleCloseCategories
-                                            }
+                                            open={Boolean(anchorElCategories)}
+                                            onClose={handleCloseCategories}
+                                            className={styles.category_menu}
                                             anchorOrigin={{
                                                 vertical: "bottom",
                                                 horizontal: "left",
@@ -163,18 +151,25 @@ function Header() {
                                                 horizontal: "left",
                                             }}
                                         >
-                                            {categories.map(
-                                                (category) => (
-                                                    <MenuItem
-                                                        key={category}
-                                                        onClick={
-                                                            handleCloseCategories
-                                                        }
-                                                    >
-                                                        {category}
-                                                    </MenuItem>
-                                                )
-                                            )}
+                                            <Box className={styles.category_menu_content}>
+                                                <Box className={styles.category_list}>
+                                                    {categories.map((category) => (
+                                                        <MenuItem
+                                                            key={category}
+                                                            onClick={handleCloseCategories}
+                                                            className={styles.category_item}
+                                                        >
+                                                            <Typography className={styles.category_item_text}>
+                                                                {category}
+                                                            </Typography>
+
+                                                            <Typography className={styles.category_arrow}>
+                                                                →
+                                                            </Typography>
+                                                        </MenuItem>
+                                                    ))}
+                                                </Box>
+                                            </Box>
                                         </Menu>
                                     </React.Fragment>
                                 );
@@ -213,38 +208,39 @@ function Header() {
                             <ShoppingCartOutlinedIcon />
                         </IconButton>
 
-                        <IconButton
-                            className={styles.iconButton}
-                            onClick={handleOpenUserMenu}
-                            aria-label="Account"
-                        >
-                            <PersonOutlineOutlinedIcon />
-                        </IconButton>
-
                         <Menu
-                            anchorEl={anchorElUser}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
+                            anchorEl={anchorElCategories}
+                            open={Boolean(anchorElCategories)}
+                            onClose={handleCloseCategories}
+                            className={styles.category_menu}
                             anchorOrigin={{
                                 vertical: "bottom",
-                                horizontal: "right",
+                                horizontal: "left",
                             }}
                             transformOrigin={{
                                 vertical: "top",
-                                horizontal: "right",
+                                horizontal: "left",
                             }}
                         >
-                            <MenuItem onClick={handleCloseUserMenu}>
-                                Profile
-                            </MenuItem>
+                            <Box className={styles.category_menu_content}>
+                                <Box className={styles.category_list}>
+                                    {categories.map((category) => (
+                                        <MenuItem
+                                            key={category}
+                                            onClick={handleCloseCategories}
+                                            className={styles.category_item}
+                                        >
+                                            <Typography className={styles.category_item_text}>
+                                                {category}
+                                            </Typography>
 
-                            <MenuItem onClick={handleCloseUserMenu}>
-                                Orders
-                            </MenuItem>
-
-                            <MenuItem onClick={handleCloseUserMenu}>
-                                Logout
-                            </MenuItem>
+                                            <Typography className={styles.category_arrow}>
+                                                →
+                                            </Typography>
+                                        </MenuItem>
+                                    ))}
+                                </Box>
+                            </Box>
                         </Menu>
                     </Box>
                 </Toolbar>

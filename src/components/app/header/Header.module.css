@@ -96,6 +96,66 @@
     display: none;
 }
 
+.category_menu :global(.MuiPaper-root) {
+    margin-top: 10px;
+    min-width: 150px;
+    border: 1px solid var(--neutral-b-100);
+    border-radius: 14px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.category_menu_content {
+    padding: 8px;
+}
+
+.category_menu_title {
+    padding: 8px 10px 12px;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: var(--neutral-b-500);
+    text-transform: uppercase;
+}
+
+.category_list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.category_item {
+    min-height: 42px !important;
+    padding: 0 10px !important;
+    border-radius: 9px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+}
+
+.category_item:hover {
+    background-color: var(--neutral-b-300) !important;
+}
+
+.category_item_text {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: var(--neutral-b-900);
+}
+
+.category_arrow {
+    font-size: 16px !important;
+    color: var(--neutral-b-300);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: all 0.2s ease;
+}
+
+.category_item:hover .category_arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 @media (max-width: 900px) {
     .navigation {
         display: none;
