@@ -1,8 +1,8 @@
 import {Box, Grid} from "@mui/material";
 import {products} from "@/data/mockData.jsx";
 import Container from "@mui/material/Container";
-import ProductCard from "@/components/app/product/ProductCard.jsx";
 import Typography from "@mui/material/Typography";
+import ProductCard from "@/components/app/Products/product-card/ProductCard.jsx";
 
 
 export default function BestSell() {

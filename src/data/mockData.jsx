@@ -13,19 +13,19 @@ import p4 from "@/assets/images/p-4.png";
 
 export const features = [
     {
-        icon: <LocalShippingOutlinedIcon />,
+        icon: <LocalShippingOutlinedIcon/>,
         title: "Free Shipping",
         description:
             "Upgrade Your Style Today And Get FREE Shipping On All Orders! Don't Miss Out.",
     },
     {
-        icon: <WorkspacePremiumOutlinedIcon />,
+        icon: <WorkspacePremiumOutlinedIcon/>,
         title: "Satisfaction Guarantee",
         description:
             "Shop confidently with our Satisfaction Guarantee: Love it or get a refund.",
     },
     {
-        icon: <SecurityOutlinedIcon />,
+        icon: <SecurityOutlinedIcon/>,
         title: "Secure Payment",
         description:
             "Your security is our priority. Your payments are secure with us.",
@@ -90,4 +90,47 @@ export const products = [
         price: "30.00",
         type: "featured"
     },
+];
+
+
+export const categories = [
+    {
+        id: 1,
+        name: "Electronics",
+    },
+    {
+        id: 2,
+        name: "Clothing",
+    },
+    {
+        id: 3,
+        name: "Shoes",
+    },
+    {
+        id: 4,
+        name: "Accessories",
+    },
+    {
+        id: 5,
+        name: "Home & Garden",
+    },
+    {
+        id: 6,
+        name: "Sports",
+    },
+];
+
+export const colors = [
+    {name: "Primary Blue", value: "var(--semantic-bl-400)"},
+    {name: "Blue", value: "var(--semantic-bl-900)"},
+    {name: "Yellow", value: "var(--semantic-y-400)"},
+    {name: "Green", value: "var(--semantic-g-300)"},
+];
+
+export const sizes = [
+    {name: "S", value: "S"},
+    {name: "M", value: "M"},
+    {name: "L", value: "L"},
+    {name: "XL", value: "XL"},
+    {name: "XXL", value: "XXL"},
 ];

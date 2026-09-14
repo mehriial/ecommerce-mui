@@ -6,7 +6,7 @@ import {Box, Container} from "@mui/material";
 import {ProductFilter} from "@/components/app/Products/product-filter/ProductFilter.jsx";
 import {ProductList} from "@/components/app/Products/product-list/ProductList.jsx";
 
-function Products() {
+function ProductDetail() {
 
     return (
         <>
@@ -36,4 +36,4 @@ function Products() {
     )
 }
 
-export default Products
+export default ProductDetail

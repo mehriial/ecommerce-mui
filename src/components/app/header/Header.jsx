@@ -13,6 +13,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import styles from "./Header.module.css";
 import Input from "@/components/ui/Input.jsx";
 
@@ -201,12 +202,23 @@ function Header() {
                             }}
                         />
 
+
                         <IconButton
                             className={styles.iconButton}
                             aria-label="Shopping cart"
                         >
                             <ShoppingCartOutlinedIcon />
                         </IconButton>
+
+
+                        <IconButton
+                            className={styles.iconButton}
+                            // onClick={handleOpenUserMenu}
+                            aria-label="Account"
+                        >
+                            <PersonOutlineOutlinedIcon />
+                        </IconButton>
+
 
                         <Menu
                             anchorEl={anchorElCategories}

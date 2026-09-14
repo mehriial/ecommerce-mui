@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {Box, Chip, Grid, Stack, Container} from "@mui/material";
 import {products} from "@/data/mockData.jsx";
-import ProductCard from "@/components/app/product/ProductCard.jsx";
+import ProductCard from "@/components/app/Products/product-card/ProductCard.jsx";
 
 export default function HomeProduct() {
     const [activeTab, setActiveTab] = useState("featured");
