@@ -1,6 +1,6 @@
 import {Box, Grid} from "@mui/material";
 import {features} from "@/data/mockData.jsx";
-import FeatureCard from "@/components/app/Home/features/FeatureCard.jsx";
+import FeatureCard from "@/components/app/home/features/FeatureCard.jsx";
 import Container from "@mui/material/Container";
 
 

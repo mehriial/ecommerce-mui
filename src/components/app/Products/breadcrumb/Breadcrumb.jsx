@@ -47,7 +47,7 @@ function Breadcrumb() {
                             fontSize: "14px",
                         }}
                     >
-                        Home
+                        Ecommerce
                     </Link>
 
                     {paths.map((path, index) => {

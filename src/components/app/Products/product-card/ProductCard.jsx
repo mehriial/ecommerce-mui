@@ -29,7 +29,7 @@ export default function ProductCard({item}) {
                 }}
             >
                 <img
-                    src={item.thumbnail}
+                    src={item.thumbnail || item.image}
                     alt={item.title}
                     style={{
                         width: "100%",
@@ -60,7 +60,7 @@ export default function ProductCard({item}) {
                 }}
             >
                 <Chip
-                    label={item.stock}
+                    label={item.availabilityStatus}
                     size="small"
                     variant="outlined"
                     sx={{
@@ -68,6 +68,7 @@ export default function ProductCard({item}) {
                         fontWeight: 500,
                         color: "var(--neutral-b-900)",
                         px: 1,
+                        textTransform: 'uppercase'
                     }}
                 />
 

@@ -38,7 +38,7 @@ export const fetchProductById = createAsyncThunk(
     "products/fetchProductById",
     async (id, {rejectWithValue}) => {
         try {
-            const response = await api.get(`/product/${id}`);
+            const response = await api.get(`/products/${id}`);
 
             return response.data;
         } catch (error) {
@@ -86,8 +86,6 @@ const productSlice = createSlice({
 
     extraReducers: (builder) => {
         builder
-
-            // Products
             .addCase(fetchProducts.pending, (state) => {
                 state.loading = true;
                 state.error = null;
@@ -107,7 +105,6 @@ const productSlice = createSlice({
                 state.error = action.payload;
             })
 
-            // Product detail
             .addCase(fetchProductById.pending, (state) => {
                 state.detailLoading = true;
                 state.detailError = null;
@@ -123,7 +120,6 @@ const productSlice = createSlice({
                 state.detailError = action.payload;
             })
 
-            // Categories
             .addCase(fetchCategories.pending, (state) => {
                 state.categoriesLoading = true;
                 state.categoriesError = null;
