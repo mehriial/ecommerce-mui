@@ -10,9 +10,26 @@ function Subscribe() {
     return (
         <Container className={`${styles.hero_container} container`}>
             <Box className={styles.hero_bg}
-                 sx={{fontFamily: "Inter", display: "flex", alignItems: "center", justifyContent: "space-between"}}>
+                sx={{
+                    fontFamily: "Inter",
+                    display: "flex",
+                    alignItems: {
+                        xs: "flex-start",
+                        sm: "center",
+                    },
+                    justifyContent: "space-between",
+                    flexDirection: {
+                        xs: "column",
+                        sm: "row",
+                    },
+                    gap: {
+                        xs: 3,
+                        sm: 2,
+                    },
+                    p: 3,
+                }}>
                 <Box className={styles.hero_left_box}
-                     sx={{display: "flex", justifyContent: "center", flexDirection: "column"}}>
+                    sx={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
                     <Typography variant='h5'>
                         Join Our Newsletter
                     </Typography>
@@ -33,7 +50,7 @@ function Subscribe() {
                             placeholder='Your email address'
                         />
                         <Button
-                            sx={{textTransform: "capitalize", background: "#000", padding: "8px 16px", maxWidth: 180, borderRadius: "4px"}}
+                            sx={{ textTransform: "capitalize", background: "#000", padding: "8px 16px", maxWidth: 180, borderRadius: "4px" }}
                             size='normal'
                             variant="contained"
                         >

@@ -37,56 +37,56 @@ export const products = [
     {
         title: "Classic Monochrome Tees",
         image: blackShirt,
-        stock: "IN STOCK",
+        availabilityStatus: "IN STOCK",
         price: "35.00",
         type: "latest"
     },
     {
         title: "Monochromatic Wardrobe",
         image: brownShirt,
-        stock: "IN STOCK",
+        availabilityStatus: "IN STOCK",
         price: "27.00",
         type: "latest"
     },
     {
         title: "Essential Neutrals",
         image: whiteShirt,
-        stock: "IN STOCK",
+        availabilityStatus: "IN STOCK",
         price: "22.00",
         type: "latest"
     },
     {
         title: "UNTRACKET Black",
         image: blackShirt2,
-        stock: "IN STOCK",
+        availabilityStatus: "IN STOCK",
         price: "43.00",
         type: "latest"
     },
     {
         title: "Elegant Ebony Sweatshirts",
         image: p1,
-        stock: "IN STOCK",
+        availabilityStatus: "IN STOCK",
         price: "35.00",
         type: "featured"
     },
     {
         title: "Sleek and Cozy Black",
         image: p2,
-        stock: "IN STOCK",
+        availabilityStatus: "IN STOCK",
         price: "57.00",
         type: "featured"
     },
     {
         title: "Raw Black Tees",
         image: p3,
-        stock: "IN STOCK",
+        availabilityStatus: "IN STOCK",
         price: "19.00",
         type: "featured"
     },
     {
         title: "MOCKUP Black",
         image: p4,
-        stock: "IN STOCK",
+        availabilityStatus: "IN STOCK",
         price: "30.00",
         type: "featured"
     },

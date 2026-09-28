@@ -32,9 +32,7 @@ function Breadcrumb() {
                     aria-label="breadcrumb"
                     sx={{
                         fontFamily: "Inter",
-                        "& .MuiBreadcrumbs-separator": {
-                            color: "var(--neutral-b-400)",
-                        },
+                        px: 3
                     }}
                 >
                     <Link
