@@ -1,5 +1,4 @@
-import * as React from "react";
-
+import {useState} from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -20,45 +19,34 @@ import Input from "@/components/ui/Input.jsx";
 const pages = [
     { label: "Home", path: "/" },
     { label: "Products", path: "/products" },
-    { label: "Categories", path: "/categories", dropdown: true },
     { label: "About", path: "/about" },
     { label: "Contact", path: "/contact" },
 ];
 
-const categories = [
-    "Electronics",
-    "Clothing",
-    "Home & Living",
-    "Sports",
-];
-
 const mobilePages = [
-    "Home",
-    "Categories",
-    "About",
-    "Contact",
+    { label: "Home", path: "/" },
+    { label: "Products", path: "/products" },
+    { label: "About", path: "/about" },
+    { label: "Contact", path: "/contact" },
 ];
 
 function Header() {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElCategories, setAnchorElCategories] = React.useState(null);
+    const navigate = useNavigate();
+
+    const [anchorElNav, setAnchorElNav] = useState(null);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
-    };
-
-    const handleOpenCategories = (event) => {
-        setAnchorElCategories(event.currentTarget);
     };
 
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     };
 
-    const handleCloseCategories = () => {
-        setAnchorElCategories(null);
+    const handleMobileNavigate = (path) => {
+        navigate(path);
+        handleCloseNavMenu();
     };
-
 
     return (
         <AppBar
@@ -121,61 +109,6 @@ function Header() {
 
                     <Box className={styles.navigation}>
                         {pages.map((page) => {
-                            if (page.dropdown) {
-                                return (
-                                    <React.Fragment key={page.label}>
-                                        <Button
-                                            onClick={handleOpenCategories}
-                                            className={styles.navItem}
-                                            endIcon={
-                                                <KeyboardArrowDownIcon
-                                                    className={
-                                                        styles.dropdownIcon
-                                                    }
-                                                />
-                                            }
-                                        >
-                                            {page.label}
-                                        </Button>
-
-                                        <Menu
-                                            anchorEl={anchorElCategories}
-                                            open={Boolean(anchorElCategories)}
-                                            onClose={handleCloseCategories}
-                                            className={styles.category_menu}
-                                            anchorOrigin={{
-                                                vertical: "bottom",
-                                                horizontal: "left",
-                                            }}
-                                            transformOrigin={{
-                                                vertical: "top",
-                                                horizontal: "left",
-                                            }}
-                                        >
-                                            <Box className={styles.category_menu_content}>
-                                                <Box className={styles.category_list}>
-                                                    {categories.map((category) => (
-                                                        <MenuItem
-                                                            key={category}
-                                                            onClick={handleCloseCategories}
-                                                            className={styles.category_item}
-                                                        >
-                                                            <Typography className={styles.category_item_text}>
-                                                                {category}
-                                                            </Typography>
-
-                                                            <Typography className={styles.category_arrow}>
-                                                                →
-                                                            </Typography>
-                                                        </MenuItem>
-                                                    ))}
-                                                </Box>
-                                            </Box>
-                                        </Menu>
-                                    </React.Fragment>
-                                );
-                            }
-
                             return (
                                 <Button
                                     key={page.label}
@@ -219,41 +152,6 @@ function Header() {
                             <PersonOutlineOutlinedIcon />
                         </IconButton>
 
-
-                        <Menu
-                            anchorEl={anchorElCategories}
-                            open={Boolean(anchorElCategories)}
-                            onClose={handleCloseCategories}
-                            className={styles.category_menu}
-                            anchorOrigin={{
-                                vertical: "bottom",
-                                horizontal: "left",
-                            }}
-                            transformOrigin={{
-                                vertical: "top",
-                                horizontal: "left",
-                            }}
-                        >
-                            <Box className={styles.category_menu_content}>
-                                <Box className={styles.category_list}>
-                                    {categories.map((category) => (
-                                        <MenuItem
-                                            key={category}
-                                            onClick={handleCloseCategories}
-                                            className={styles.category_item}
-                                        >
-                                            <Typography className={styles.category_item_text}>
-                                                {category}
-                                            </Typography>
-
-                                            <Typography className={styles.category_arrow}>
-                                                →
-                                            </Typography>
-                                        </MenuItem>
-                                    ))}
-                                </Box>
-                            </Box>
-                        </Menu>
                     </Box>
                 </Toolbar>
             </Container>
