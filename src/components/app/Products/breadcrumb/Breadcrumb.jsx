@@ -6,8 +6,10 @@ import Link from "@mui/material/Link";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 
 import styles from "./Breadcrumb.module.css";
+import {useTranslation} from "react-i18next";
 
 function Breadcrumb() {
+    const {t} = useTranslation()
     const location = useLocation();
 
     const paths = location.pathname
@@ -68,7 +70,7 @@ function Breadcrumb() {
                                     fontWeight: 500,
                                 }}
                             >
-                                {label}
+                                {t(label)}
                             </Typography>
                         ) : (
                             <Link
@@ -82,7 +84,7 @@ function Breadcrumb() {
                                     fontSize: "14px",
                                 }}
                             >
-                                {label}
+                                {t(label)}
                             </Link>
                         );
                     })}

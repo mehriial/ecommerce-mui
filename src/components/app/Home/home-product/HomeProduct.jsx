@@ -2,8 +2,10 @@ import {useState} from "react";
 import {Box, Chip, Grid, Stack, Container} from "@mui/material";
 import {products} from "@/data/mockData.jsx";
 import ProductCard from "@/components/app/Products/product-card/ProductCard.jsx";
+import {useTranslation} from "react-i18next";
 
 export default function HomeProduct() {
+    const {t} = useTranslation()
     const [activeTab, setActiveTab] = useState("featured");
 
     const filteredProducts = products.filter((item) =>
@@ -27,7 +29,7 @@ export default function HomeProduct() {
                         sx={{mb: 2}}
                     >
                         <Chip
-                            label="Featured"
+                            label={t("Featured")}
                             clickable
                             variant={activeTab === "featured" ? "filled" : "outlined"}
                             onClick={() => setActiveTab("featured")}
@@ -45,7 +47,7 @@ export default function HomeProduct() {
                         />
 
                         <Chip
-                            label="Latest"
+                            label={t("Latest")}
                             clickable
                             variant={activeTab === "latest" ? "filled" : "outlined"}
                             onClick={() => setActiveTab("latest")}
@@ -65,12 +67,17 @@ export default function HomeProduct() {
                 </Box>
 
                 <Grid container spacing={4}>
-                    {filteredProducts.map((item, index) => (
-                        <ProductCard
-                            key={index}
-                            index={index}
-                            item={item}
-                        />
+                    {filteredProducts.slice(0, 4).map((item) => (
+                        <Grid
+                            key={item.id}
+                            size={{
+                                xs: 12,
+                                sm: 6,
+                                md: 3,
+                            }}
+                        >
+                            <ProductCard item={item} />
+                        </Grid>
                     ))}
                 </Grid>
 

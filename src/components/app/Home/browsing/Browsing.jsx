@@ -5,8 +5,10 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import brImage from '@/assets/images/br-img.png'
+import {useTranslation} from "react-i18next";
 
 function Browsing() {
+    const {t} = useTranslation()
 
     return (
         <Container className={`${styles.hero_container} container`}>
@@ -15,17 +17,17 @@ function Browsing() {
                 <Box className={styles.hero_left_box}
                     sx={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
                     <Typography variant='h5'>
-                        Browse Our Fashion Paradise!
+                        {t("browsing.header")}
                     </Typography>
                     <Typography variant='body2' sx={{ marginBottom: "50px" }}>
-                        Step into a world of style and explore our diverse collection of clothing categories.
+                        {t("browsing.desc")}
                     </Typography>
                     <Button
                         sx={{ textTransform: "capitalize", background: "#000", padding: "8px 16px", maxWidth: 180 }}
                         size='small'
                         variant="contained"
                     >
-                        Start Browsing
+                        {t("browsing.button")}
                         <ArrowForwardIcon />
                     </Button>
                 </Box>

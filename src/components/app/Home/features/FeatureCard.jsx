@@ -1,7 +1,9 @@
 import {Box, Grid, Typography} from "@mui/material";
+import {useTranslation} from "react-i18next";
 
 
 export default function FeatureCard({index, item}) {
+    const {t} = useTranslation()
     return (
         <Grid key={index} size={{xs: 12, md: 4}}>
             <Box>
@@ -29,7 +31,7 @@ export default function FeatureCard({index, item}) {
                         color: "var(--neutral-b-800)"
                     }}
                 >
-                    {item.title}
+                    {t(item.title)}
                 </Typography>
 
                 <Typography
@@ -41,7 +43,7 @@ export default function FeatureCard({index, item}) {
                         maxWidth: 300,
                     }}
                 >
-                    {item.description}
+                    {t(item.description)}
                 </Typography>
             </Box>
         </Grid>

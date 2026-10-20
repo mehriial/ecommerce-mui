@@ -21,8 +21,11 @@ import Subscribe from "@/components/app/subscribe/Subscribe.jsx";
 import styles from './Footer.module.css'
 import {RiMastercardFill} from "react-icons/ri";
 import {GrAmex} from "react-icons/gr";
+import {useTranslation} from "react-i18next";
 
 export default function Footer() {
+    const {t} = useTranslation()
+    const currentYear = new Date().getFullYear();
     return (
         <>
             <Subscribe/>
@@ -90,8 +93,7 @@ export default function Footer() {
                                             color: "var(--neutral-b-500)",
                                         }}
                                     >
-                                        DevCut is a YouTube channel for
-                                        practical project-based learning.
+                                        {t("footer.desc")}
                                     </Typography>
 
                                     <Stack
@@ -134,7 +136,7 @@ export default function Footer() {
 
                             <Grid size={{xs: 6, sm: 2}}>
                                 <FooterColumn
-                                    title="SUPPORT"
+                                    title={t("support")}
                                     links={[
                                         "FAQ",
                                         "Terms of use",
@@ -145,7 +147,7 @@ export default function Footer() {
 
                             <Grid size={{xs: 6, sm: 2}}>
                                 <FooterColumn
-                                    title="COMPANY"
+                                    title="company"
                                     links={[
                                         "About us",
                                         "Contact",
@@ -156,7 +158,7 @@ export default function Footer() {
 
                             <Grid size={{xs: 6, sm: 2}}>
                                 <FooterColumn
-                                    title="SHOP"
+                                    title="shop"
                                     links={[
                                         "My Account",
                                         "Checkout",
@@ -172,10 +174,11 @@ export default function Footer() {
                                             fontSize: 14,
                                             color: "var(--neutral-b-300)",
                                             fontWeight: 500,
-                                            whiteSpace: "nowrap"
+                                            whiteSpace: "nowrap",
+                                            textTransform: "uppercase"
                                         }}
                                     >
-                                        ACCEPTED PAYMENTS
+                                        {t("Accepted payments")}
                                     </Typography>
 
                                     <Stack
@@ -214,7 +217,7 @@ export default function Footer() {
                                     color: "#696e77",
                                 }}
                             >
-                                © 2023 DevCut. All rights reserved.
+                                © {currentYear} DevCut.  {t("footer.end")}
                             </Typography>
                         </Box>
                     </Container>
@@ -225,6 +228,7 @@ export default function Footer() {
 }
 
 function FooterColumn({title, links}) {
+    const {t} = useTranslation()
     return (
         <Stack spacing={2.1}>
             <Typography
@@ -235,7 +239,7 @@ function FooterColumn({title, links}) {
                     textTransform: "uppercase"
                 }}
             >
-                {title}
+                {t(title)}
             </Typography>
 
             <Stack spacing={1.4}>
@@ -250,7 +254,7 @@ function FooterColumn({title, links}) {
                             fontWeight: 500,
                         }}
                     >
-                        {link}
+                        {t(link)}
                     </Link>
                 ))}
             </Stack>

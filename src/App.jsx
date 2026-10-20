@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "@/pages/home/index.jsx";
 import Products from "@/pages/products/index.jsx";
 import ProductDetail from "@/pages/product-details/index.jsx";
+import "./i18n/index.js";
 
 function App() {
 

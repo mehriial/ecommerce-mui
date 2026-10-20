@@ -4,9 +4,10 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import {useTranslation} from "react-i18next";
 
 function Subscribe() {
-
+const {t} = useTranslation()
     return (
         <Container className={`${styles.hero_container} container`}>
             <Box className={styles.hero_bg}
@@ -31,10 +32,10 @@ function Subscribe() {
                 <Box className={styles.hero_left_box}
                     sx={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
                     <Typography variant='h5'>
-                        Join Our Newsletter
+                        {t("subscribe.header")}
                     </Typography>
                     <Typography variant='body2'>
-                        We love to surprise our subscribers with occasional gifts.
+                        {t("subscribe.desc")}
                     </Typography>
                 </Box>
 
@@ -47,14 +48,14 @@ function Subscribe() {
                         <TextField
                             size='small'
                             className={styles.input}
-                            placeholder='Your email address'
+                            placeholder={t("subscribe.input")}
                         />
                         <Button
                             sx={{ textTransform: "capitalize", background: "#000", padding: "8px 16px", maxWidth: 180, borderRadius: "4px" }}
                             size='normal'
                             variant="contained"
                         >
-                            Subscribe
+                            {t("subscribe.button")}
                         </Button>
                     </Box>
                 </Box>

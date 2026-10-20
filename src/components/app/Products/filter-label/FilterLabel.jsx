@@ -1,6 +1,8 @@
 import {Typography} from "@mui/material";
+import {useTranslation} from "react-i18next";
 
 export function FilterLabel({label, padding = '18px'}) {
+    const {t} = useTranslation()
     return (
         <Typography
             sx={{
@@ -10,7 +12,7 @@ export function FilterLabel({label, padding = '18px'}) {
                 padding: padding,
             }}
         >
-            {label}
+            {t(label)}
         </Typography>
     )
 }

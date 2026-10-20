@@ -15,6 +15,8 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import styles from "./Header.module.css";
 import Input from "@/components/ui/Input.jsx";
 import { useNavigate } from "react-router";
+import LanguageSwitcher from "@/components/app/language-switcher/LanguageSwitcher.jsx";
+import {useTranslation} from "react-i18next";
 
 const pages = [
     { label: "Home", path: "/" },
@@ -31,7 +33,20 @@ const mobilePages = [
 ];
 
 function Header() {
+    const {t} = useTranslation()
     const navigate = useNavigate();
+
+    const [search, setSearch] = useState("");
+
+    const handleSearch = (event) => {
+        event.preventDefault();
+
+        const query = search.trim();
+
+        if (!query) return;
+
+        navigate(`/products?search=${encodeURIComponent(query)}`);
+    };
 
     const [anchorElNav, setAnchorElNav] = useState(null);
 
@@ -46,6 +61,16 @@ function Header() {
     const handleMobileNavigate = (path) => {
         navigate(path);
         handleCloseNavMenu();
+    };
+
+    const handleSearchChange = (event) => {
+        const value = event.target.value;
+
+        setSearch(value);
+
+        if (value.trim() === "") {
+            navigate("/products", { replace: true });
+        }
     };
 
     return (
@@ -115,27 +140,40 @@ function Header() {
                                     href={page.path}
                                     className={styles.navItem}
                                 >
-                                    {page.label}
+                                    {t(page.label)}
                                 </Button>
                             );
                         })}
                     </Box>
 
                     <Box className={styles.actions}>
-                        <Input
-                            placeholder="Search products"
-                            size="small"
-                            className={styles.search}
-                            slotProps={{
-                                input: {
-                                    startAdornment: (
-                                        <SearchIcon className={styles.searchIcon} />
-                                    ),
-                                },
-                            }}
-                        />
+
+                        <Box
+                            component="form"
+                            onSubmit={handleSearch}
+                        >
+                            <Input
+                                placeholder={t("header.search_input")}
+                                size="small"
+                                className={styles.search}
+                                value={search}
+                                onChange={handleSearchChange}
+                                slotProps={{
+                                    input: {
+                                        startAdornment: (
+                                            <SearchIcon
+                                                className={styles.searchIcon}
+                                                sx={{ cursor: "pointer" }}
+                                                onClick={handleSearch}
+                                            />
+                                        ),
+                                    },
+                                }}
+                            />
+                        </Box>
 
 
+                        <LanguageSwitcher />
                         <IconButton
                             className={styles.iconButton}
                             aria-label="Shopping cart"

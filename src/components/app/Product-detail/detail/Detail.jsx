@@ -21,11 +21,12 @@ import {
     toggleColor, toggleSize,
 
 } from "@/store/slices/productDetailSlice.js";
+import {useTranslation} from "react-i18next";
 
 export function Detail({
-    product
+                           product
                        }) {
-
+    const {t} = useTranslation()
     const {id} = useParams();
     const dispatch = useDispatch();
 
@@ -130,7 +131,7 @@ export function Detail({
                             borderRadius: "100px"
                         }}>
                             <StarIcon sx={{fontSize: 20}}/>
-                            {product?.rating} — {product?.reviews?.length} Reviews
+                            {product?.rating} — {product?.reviews?.length} {t("Reviews")}
                         </Box>
 
                         <Box sx={{
@@ -166,7 +167,7 @@ export function Detail({
                             color: "var(--neutral-b-500)",
                             textTransform: "uppercase",
                         }}>
-                            Available Colors
+                            {t("productDetail.color")}
                         </Typography>
 
                         <Box
@@ -208,7 +209,7 @@ export function Detail({
                                 textTransform: "uppercase",
                             }}
                         >
-                            Select Size
+                            {t("productDetail.size")}
                         </Typography>
 
                         <Box
@@ -278,7 +279,7 @@ export function Detail({
                                 textTransform: "uppercase",
                             }}
                         >
-                            Quantity
+                            {t("productDetail.quantity")}
                         </Typography>
 
                         <Box
@@ -345,7 +346,7 @@ export function Detail({
                                 fontSize: 14
                             }}
                         >
-                            Add to cart
+                            {t("productDetail.button")}
                         </Button>
 
                         <IconButton
@@ -368,7 +369,7 @@ export function Detail({
                             textTransform: "uppercase",
                         }}
                     >
-                        Free shipping on orders $100+
+                        {t("productDetail.span")}
                     </Typography>
                 </Box>
             </Box>

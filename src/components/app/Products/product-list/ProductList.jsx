@@ -1,13 +1,18 @@
+
 import {
     Box,
     Chip,
     Pagination,
     Typography,
+    CircularProgress,
 } from "@mui/material";
-import {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
 
-import {FilterLabel} from "@/components/app/Products/filter-label/FilterLabel.jsx";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useSearchParams } from "react-router";
+import { useTranslation } from "react-i18next";
+
+import { FilterLabel } from "@/components/app/Products/filter-label/FilterLabel.jsx";
 import ProductCard from "@/components/app/Products/product-card/ProductCard.jsx";
 
 import {
@@ -16,14 +21,23 @@ import {
     removeSize,
 } from "@/store/slices/productFilterSlice";
 
-import {fetchProducts} from "@/store/slices/productSlice.js";
+import { fetchProducts } from "@/store/slices/productSlice.js";
 
 const PRODUCTS_PER_PAGE = 9;
 
 export function ProductList() {
+    const { t } = useTranslation();
     const dispatch = useDispatch();
 
-    const [page, setPage] = useState(1);
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const search = searchParams.get("search")?.trim() || "";
+
+    const pageParam = Number(searchParams.get("page"));
+    const page =
+        Number.isInteger(pageParam) && pageParam > 0
+            ? pageParam
+            : 1;
 
     const {
         categories,
@@ -38,28 +52,78 @@ export function ProductList() {
         error,
     } = useSelector((state) => state.products);
 
+    const selectedCategory =
+        categories.length > 0
+            ? categories[0].slug
+            : null;
+
     useEffect(() => {
         const skip = (page - 1) * PRODUCTS_PER_PAGE;
-
-        const selectedCategory =
-            categories.length > 0
-                ? categories[0].slug
-                : null;
 
         dispatch(
             fetchProducts({
                 skip,
                 limit: PRODUCTS_PER_PAGE,
                 category: selectedCategory,
+                search,
             })
         );
-    }, [dispatch, page, categories]);
+    }, [dispatch, page, selectedCategory, search]);
+
+    const updatePage = (value) => {
+        setSearchParams((prev) => {
+            const params = new URLSearchParams(prev);
+
+            if (value === 1) {
+                params.delete("page");
+            } else {
+                params.set("page", String(value));
+            }
+
+            return params;
+        });
+    };
+
+    const handlePageChange = (_, value) => {
+        updatePage(value);
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    };
+
+    const handleRemoveSearch = () => {
+        setSearchParams((prev) => {
+            const params = new URLSearchParams(prev);
+
+            params.delete("search");
+            params.delete("page");
+
+            return params;
+        });
+    };
+
+    const handleRemoveCategory = (id) => {
+        dispatch(removeCategory(id));
+        updatePage(1);
+    };
 
     const appliedFilters = [
+        ...(search
+            ? [
+                {
+                    key: "search",
+                    label: `Search: ${search}`,
+                    onDelete: handleRemoveSearch,
+                },
+            ]
+            : []),
+
         ...categories.map((item) => ({
             key: `category-${item.id}`,
             label: item.name,
-            onDelete: () => dispatch(removeCategory(item.id)),
+            onDelete: () => handleRemoveCategory(item.id),
         })),
 
         ...colors.map((item) => ({
@@ -77,18 +141,15 @@ export function ProductList() {
 
     const totalPages = Math.ceil(total / PRODUCTS_PER_PAGE);
 
-    const firstProduct = total === 0
-        ? 0
-        : (page - 1) * PRODUCTS_PER_PAGE + 1;
+    const firstProduct =
+        total === 0
+            ? 0
+            : (page - 1) * PRODUCTS_PER_PAGE + 1;
 
     const lastProduct = Math.min(
         page * PRODUCTS_PER_PAGE,
         total
     );
-
-    const handlePageChange = (_, value) => {
-        setPage(value);
-    };
 
     return (
         <Box
@@ -100,7 +161,7 @@ export function ProductList() {
             {/* Applied Filters */}
             <Box>
                 <FilterLabel
-                    label="Applied Filters:"
+                    label="Applied Filters"
                     padding="4px"
                 />
 
@@ -126,12 +187,14 @@ export function ProductList() {
                 )}
             </Box>
 
+            {/* Results Header */}
             <Box
                 sx={{
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
                     mt: 3,
+                    gap: 2,
                     color: "var(--neutral-b-500)",
                 }}
             >
@@ -140,7 +203,11 @@ export function ProductList() {
                         fontSize: 12,
                     }}
                 >
-                    Showing {firstProduct}-{lastProduct} of {total} results.
+                    {t("products.results", {
+                        first: firstProduct,
+                        last: lastProduct,
+                        total,
+                    })}
                 </Typography>
 
                 <Typography
@@ -148,29 +215,36 @@ export function ProductList() {
                         fontSize: 12,
                     }}
                 >
-                    Sort by
+                    {t("product.sortBy")}
                 </Typography>
             </Box>
 
+            {/* Loading */}
             {loading && (
                 <Box
                     sx={{
                         display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
                         justifyContent: "center",
-                        py: 8,
+                        gap: 2,
+                        py: 10,
                     }}
                 >
+                    <CircularProgress size={28} />
+
                     <Typography
                         sx={{
                             fontSize: 14,
                             color: "var(--neutral-b-500)",
                         }}
                     >
-                        Loading products...
+                        {t("products.loading")}
                     </Typography>
                 </Box>
             )}
 
+            {/* Error */}
             {!loading && error && (
                 <Box
                     sx={{
@@ -190,7 +264,42 @@ export function ProductList() {
                 </Box>
             )}
 
-            {!loading && !error && (
+            {/* Empty State */}
+            {!loading && !error && products.length === 0 && (
+                <Box
+                    sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        py: 10,
+                        gap: 1,
+                    }}
+                >
+                    <Typography
+                        sx={{
+                            fontSize: 18,
+                            fontWeight: 600,
+                        }}
+                    >
+                        {t("products.noProducts")}
+                    </Typography>
+
+                    {search && (
+                        <Typography
+                            sx={{
+                                fontSize: 13,
+                                color: "var(--neutral-b-500)",
+                            }}
+                        >
+                            No results found for "{search}"
+                        </Typography>
+                    )}
+                </Box>
+            )}
+
+            {/* Product Grid */}
+            {!loading && !error && products.length > 0 && (
                 <Box
                     sx={{
                         display: "grid",
@@ -213,7 +322,7 @@ export function ProductList() {
             )}
 
             {/* Pagination */}
-            {totalPages > 1 && (
+            {!loading && !error && totalPages > 1 && (
                 <Box
                     sx={{
                         margin: "80px 0",
@@ -224,7 +333,7 @@ export function ProductList() {
                 >
                     <Pagination
                         count={totalPages}
-                        page={page}
+                        page={Math.min(page, totalPages)}
                         onChange={handlePageChange}
                     />
                 </Box>

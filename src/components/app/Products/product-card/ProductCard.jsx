@@ -1,21 +1,22 @@
-import {
-    Box,
-    Chip,
-    Typography,
-} from "@mui/material";
-import {useNavigate} from "react-router-dom";
+import { Box, Chip, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-export default function ProductCard({item}) {
-    const navigate = useNavigate()
+export default function ProductCard({ item }) {
+    const navigate = useNavigate();
 
-    const handleNavigate = (id) => {
-        navigate(`/product/${id}`)
-    }
+    const handleNavigate = () => {
+        navigate(`/product/${item.id}`);
+    };
+
     return (
-        <Box onClick={() => handleNavigate(item.id)}
-             sx={{
-                 cursor: 'pointer'
-             }}>
+        <Box
+            onClick={handleNavigate}
+            sx={{
+                width: "100%",
+                minWidth: 0,
+                cursor: "pointer",
+            }}
+        >
             <Box
                 sx={{
                     width: "100%",
@@ -68,7 +69,7 @@ export default function ProductCard({item}) {
                         fontWeight: 500,
                         color: "var(--neutral-b-900)",
                         px: 1,
-                        textTransform: 'uppercase'
+                        textTransform: "uppercase",
                     }}
                 />
 

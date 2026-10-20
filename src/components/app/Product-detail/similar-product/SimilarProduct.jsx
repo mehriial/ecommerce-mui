@@ -3,12 +3,14 @@ import ProductCard from "@/components/app/Products/product-card/ProductCard.jsx"
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {fetchProducts} from "@/store/slices/productSlice.js";
+import {useTranslation} from "react-i18next";
 
 export default function SimilarProduct(
     {
         category
     }
 ) {
+    const {t} = useTranslation()
     const dispatch = useDispatch();
     const {
         products,
@@ -42,7 +44,7 @@ export default function SimilarProduct(
                         mb: 1,
                     }}
                 >
-                    You might also like
+                    {t("similar.header")}
                 </Typography>
 
                 <Typography
@@ -53,7 +55,7 @@ export default function SimilarProduct(
                         letterSpacing: "0.04em",
                     }}
                 >
-                    Similar products
+                    {t("similar.subtitle")}
                 </Typography>
             </Box>
 

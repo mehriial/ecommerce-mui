@@ -7,9 +7,10 @@ import {
 
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
+import {useTranslation} from "react-i18next";
 
 export default function ProductReviews({product}) {
-
+    const {t} = useTranslation()
     const getInitials = (name = "") => {
         return name
             .split(" ")
@@ -35,7 +36,7 @@ export default function ProductReviews({product}) {
                     mb: 1.5,
                 }}
             >
-                Reviews
+                {t("Reviews")}
             </Typography>
 
             <Box
@@ -81,7 +82,7 @@ export default function ProductReviews({product}) {
                     mb: 4,
                 }}
             >
-                Write a review
+                {t("review.button")}
             </Button>
 
             {product?.reviews?.length > 0 && (
@@ -105,7 +106,7 @@ export default function ProductReviews({product}) {
                                 mr: 0.5,
                             }}
                         >
-                            Sort by
+                            {t("product.sortBy")}
                         </Typography>
                     </Box>
 
@@ -236,7 +237,7 @@ export default function ProductReviews({product}) {
                                     py: 1,
                                 }}
                             >
-                                Load more reviews
+                                {t("review.loadMore")}
                             </Button>
                         </Box>
                     )}

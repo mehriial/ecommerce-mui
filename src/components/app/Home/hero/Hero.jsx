@@ -5,8 +5,10 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import heroImage from "@/assets/images/hero_image.png";
+import {useTranslation} from "react-i18next";
 
 function Hero() {
+    const {t} = useTranslation()
     return (
         <Container className={`${styles.hero_container} container`}>
             <Box
@@ -45,7 +47,7 @@ function Hero() {
                             },
                         }}
                     >
-                        Fresh Arrivals Online
+                        {t("hero.title")}
                     </Typography>
 
                     <Typography
@@ -62,7 +64,7 @@ function Hero() {
                             },
                         }}
                     >
-                        Discover Our Newest Collection Today.
+                        {t("hero.desc")}
                     </Typography>
 
                     <Button
@@ -81,7 +83,7 @@ function Hero() {
                         size="small"
                         variant="contained"
                     >
-                        View Collection
+                        {t("hero.button")}
 
                         <ArrowForwardIcon
                             sx={{

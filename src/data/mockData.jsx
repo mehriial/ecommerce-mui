@@ -92,34 +92,6 @@ export const products = [
     },
 ];
 
-
-export const categories = [
-    {
-        id: 1,
-        name: "Electronics",
-    },
-    {
-        id: 2,
-        name: "Clothing",
-    },
-    {
-        id: 3,
-        name: "Shoes",
-    },
-    {
-        id: 4,
-        name: "Accessories",
-    },
-    {
-        id: 5,
-        name: "Home & Garden",
-    },
-    {
-        id: 6,
-        name: "Sports",
-    },
-];
-
 export const colors = [
     {name: "Primary Blue", value: "var(--semantic-bl-400)"},
     {name: "Blue", value: "var(--semantic-bl-900)"},

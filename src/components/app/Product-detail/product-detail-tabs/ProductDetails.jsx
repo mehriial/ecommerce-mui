@@ -1,8 +1,11 @@
 import {Box, Typography} from "@mui/material";
+import {useTranslation} from "react-i18next";
 
 export default function ProductDetails({
                                            product
                                        }) {
+
+    const {t} = useTranslation()
 
     return (
         <Box>
@@ -15,7 +18,7 @@ export default function ProductDetails({
                     mb: 3,
                 }}
             >
-                Detail
+                {t("productDetail.header")}
             </Typography>
 
             <Typography

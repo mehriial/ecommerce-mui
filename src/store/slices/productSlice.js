@@ -5,6 +5,7 @@ import {
 
 import api from "@/api/axios.js";
 
+
 export const fetchProducts = createAsyncThunk(
     "products/fetchProducts",
     async (
@@ -12,18 +13,24 @@ export const fetchProducts = createAsyncThunk(
             skip = 0,
             limit = 9,
             category = null,
+            search = "",
         } = {},
-        {rejectWithValue}
+        { rejectWithValue }
     ) => {
         try {
-            const url = category
-                ? `/products/category/${category}`
-                : "/products";
+            let url = "/products";
+
+            if (search.trim()) {
+                url = "/products/search";
+            } else if (category) {
+                url = `/products/category/${category}`;
+            }
 
             const response = await api.get(url, {
                 params: {
                     skip,
                     limit,
+                    ...(search.trim() && { q: search.trim() }),
                 },
             });
 
